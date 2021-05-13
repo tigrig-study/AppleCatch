@@ -8,10 +8,13 @@ public class BasketController : MonoBehaviour
   [SerializeField] private AudioClip bombSE;
   private AudioSource audioSource;
 
+  private GameDirector gameDirector;
+
 
   private void Start()
   {
     audioSource = GetComponent<AudioSource>();
+    gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
   }
 
   private void Update()
@@ -34,10 +37,12 @@ public class BasketController : MonoBehaviour
   {
     if (other.gameObject.tag == "Apple")
     {
+      gameDirector.AddPoint(100);
       audioSource.PlayOneShot(appleSE);
     }
     else
     {
+      gameDirector.CutPointInHalf();
       audioSource.PlayOneShot(bombSE);
     }
     Destroy(other.gameObject);
