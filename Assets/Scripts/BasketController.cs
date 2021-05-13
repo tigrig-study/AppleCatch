@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class BasketController : MonoBehaviour
 {
+  [SerializeField] private AudioClip appleSE;
+  [SerializeField] private AudioClip bombSE;
+  private AudioSource audioSource;
+
+
+  private void Start()
+  {
+    audioSource = GetComponent<AudioSource>();
+  }
+
   private void Update()
   {
     if (Input.GetMouseButtonDown(0))
@@ -18,5 +28,18 @@ public class BasketController : MonoBehaviour
         transform.position = new Vector3(x, 0, z);
       }
     }
+  }
+
+  private void OnTriggerEnter(Collider other)
+  {
+    if (other.gameObject.tag == "Apple")
+    {
+      audioSource.PlayOneShot(appleSE);
+    }
+    else
+    {
+      audioSource.PlayOneShot(bombSE);
+    }
+    Destroy(other.gameObject);
   }
 }
