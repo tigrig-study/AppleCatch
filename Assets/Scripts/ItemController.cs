@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-  [SerializeField] float dropSpeed = -0.03f;
+  public float dropSpeed = -0.03f;
 
   private void Update()
   {
