@@ -8,7 +8,7 @@ public class ItemController : MonoBehaviour
 
   private void Update()
   {
-    transform.Translate(0, dropSpeed, 0);
+    transform.Translate(0, dropSpeed * 60 * Time.deltaTime, 0);
     if (transform.position.y <= -1.0f) Destroy(gameObject);
   }
 }

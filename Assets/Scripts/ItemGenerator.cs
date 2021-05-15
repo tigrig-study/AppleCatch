@@ -13,6 +13,8 @@ public class ItemGenerator : MonoBehaviour
   float speed = -0.03f;
   float bombRatio = 0.2f;
 
+  public bool itemGenerate = true;
+
   public void SetParameters(float span, float speed, float bombRatio)
   {
     this.span = span;
@@ -22,6 +24,8 @@ public class ItemGenerator : MonoBehaviour
 
   private void Update()
   {
+    if (!itemGenerate) return;
+
     delta += Time.deltaTime;
 
     if (delta > this.span)
